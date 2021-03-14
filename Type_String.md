@@ -6,15 +6,15 @@ using std :: string
 ```
 2. initialization
 ```C++
-string s1;	// default initialization; s1 is the empty string  
-string s2 = s1;	// s2 is a copy of s1  
-string s3 = "hiya";	// s3 is a copy of the string literal  
-string s4(10, 'c');	// s4 is cccccccccc
-string s5 = "hiya";	// copy initialization
-string s6("hiya");	// direct initialization
-string s7(10, 'c'); // direct initialization; s7 is cccccccccc
-string temp(10, 'c'); // temp is cccccccccc  
-string s8 = temp; // copy temp into s8
+string s1;				// default initialization; s1 is the empty string  
+string s2 = s1;			// s2 is a copy of s1  
+string s3 = "hiya";		// s3 is a copy of the string literal  
+string s4(10, 'c');		// s4 is cccccccccc
+string s5 = "hiya";		// copy initialization
+string s6("hiya");		// direct initialization
+string s7(10, 'c'); 	// direct initialization; s7 is cccccccccc
+string temp(10, 'c'); 	// temp is cccccccccc  
+string s8 = temp; 		// copy temp into s8
 ```
 3. basic operation
 - os<<s : writes s onto os(output stream) and return os.
@@ -47,7 +47,7 @@ s1 += s2;	// equivalent to s1 = s1 + s2
 - s1=s2 : replace characters in s1 with the copy of s2.
 - s1==s2/s1!=s2 : return true or false.
 4. dealing **characters** in string
-- To use these functions ,wo must define *cctype* header.(`#include <cctype>`)
+- To use these functions ,we must define *cctype* header.(`#include <cctype>`)
 ```C++
  isalnum(c)	//return true if c is letter or digit.
  isalpha(c)	//return true if c is letter.
@@ -61,5 +61,24 @@ s1 += s2;	// equivalent to s1 = s1 + s2
 ```
 - At the same time ,if c is a lowercase letter ,and what you need is uppercase letter ,you should call function `toupper(c)`.[/`tolower(c)`]
 - **cautious:**Headers in C code have names of the form name.h ,but the C++ code versions of these headers are named c name ——they remove the .h .	
->Ordinarily, C++ programs should use the cname versions of headers and  not the name .h versions. That way names from the standard library are  consistently found in the std namespace. Using the .h headers puts the  burden on the programmer to remember which library names are inherited  from C and which are unique to C++.
-- especially ,if you want to process every characters is the string ,you (p136)
+>Ordinarily, C++ programs should use the c name versions of headers and  not the name .h versions. That way names from the standard library are  consistently found in the std namespace. Using the .h headers puts the  burden on the programmer to remember which library names are inherited  from C and which are unique to C++.
+>Especially ,if you want to process every characters is a string ,the best approach is to use a statement introduced by the new standard : the range for statement[[Range-based]]. 
+```C++
+for (declaration : expression)
+	statement
+```
+- for example:[[NoteBook]]
+```C++
+string str("some string")
+for (auto c : str)
+	cout << c <<
+```
+
+```C++
+string s("Hello World!!!");
+decltype(s.size()) punct_cnt = 0;	// count the number of punctuation characters in s
+for (auto c : s) 					// for every char in s
+if (ispunct(c)) 					// if the character is punctuation
+	++punct_cnt; 					// increment the punctuation(标点) counter
+cout << punct_cnt<< " punctuation characters in " << s << endl;
+```
