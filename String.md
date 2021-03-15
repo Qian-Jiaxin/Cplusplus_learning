@@ -2,7 +2,7 @@
 1. To use the string type ,we must include the *string* header.
 ```C++
 #include <string>
-using std :: string
+using std::string
 ```
 2. initialization
 ```C++

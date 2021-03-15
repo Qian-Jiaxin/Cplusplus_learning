@@ -3,7 +3,7 @@ Using declaration lets us use a namespcae without qualifying the name with a nam
 
 
 **template:**using namespace :: name
->using namespace :: std
+>using namespace::std
 
 ```C++
 using std::cin

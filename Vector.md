@@ -22,7 +22,9 @@ vector<T> v5{a,b,c...}	//v5 has as many elements as there are initializers.
 - v\[n\]:returns a reference to the element at position n in v.
 - v1=v2:replaces the elements in v1 with a copy of the elements in v2.
 - v1={a,b,c...}:replace the elements in v1 with a copy of elements in the comma-seperated list.
+
 **caution:**
+
 situation 1:
 ```C++
 vector<int> ivec;		// empty vector
