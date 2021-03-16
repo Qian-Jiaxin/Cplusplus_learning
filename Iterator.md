@@ -21,6 +21,23 @@ for (auto it = s.begin();it != s.end() && !isspace(*it);++it)	//process characte
 ```
 - \--inter:decrements iter to refer to th eprevious element in the container.
 - iter1 == iter2/inter1 != inter2:compares two interators for equality.\[two iterators are equal if they denote the same element or if they are the off-the-end iterator for the same container.\]
+- iter+n/iter-n:adding(subtracting) an integral value n to(from) an iterator yields an iterator that many elements forward(backward) within the container.
+- iter1 += n/iter1 -= n:compound-assignment for iterator addition and subtraction.(assigns to iter1 the value of adding n to ,or subtracting n from ,iter1.)
+```C++
+//text must be sorted
+//beg and end will debote the range we're searching
+auto beg = text.begin(),end = text.end();
+auto mid = text.begin() + (beg + end)/2;
+//while there are still elements to look at and we haven't yet found sought
+while (mid != end && *mid != sought)
+{
+	if(sought < *mid)
+		end = mid;
+	else 
+		beg = mid + 1;
+	mid = beg +(end - begin)/2
+}
+```
 2. iterator types
 - iterator and const_iterator : A *const_iterator* behaves like a const pointer. Like a const pointer, a *const_interator* may read but not write the eleme nt it denotes.
 ```C++
@@ -42,8 +59,5 @@ auto it2 = cv.begin();	//it2 has type vector<int>::const_iterator
 auto it3 = v.cbegin();	//it3 has type vector<int>::const_iterator
 ```
 4. combing dereference and member access
-- If that objects has a class type, we may want to access a member of that object.For example, we might have a vector of strings and we might need to know whether a given element is empty.Assuming it is an iterator into this vector, we can check whether the string that it denote is empty as follows:
-`(*it).empty()`is right, but `*it.empty()*`is wrong. Because the second one attempt to fetch the member named empty from it and there is no member named empty actually.
+- If that objects has a class type, we may want to access a member of that object.For example, we might have a vector of strings and we might need to know whether a given element is empty.Assuming it is an iterator into this vector, we can check whether the string that it denote is empty as follows:**`(*it).empty()`is right, but `*it.empty()`is wrong. Because the second one attempt to fetch the member named empty from it and there is no member named empty actually.**
 - To simplify expression such as this one ,the language defines the arrow operator\[the ->operator\]
-
-p160

@@ -12,5 +12,3 @@ for (auto it = vect.begin();it != vect.end();++it)	//it的类型是std::vector<i
 <https://zh.wikipedia.org/wiki/Decltype>
 对于变量或函数参数作为表达式，右decltype推导出的类型和源码中的*定义精确匹配*
 `decltype(exp()) x;`
-
-# iterator
